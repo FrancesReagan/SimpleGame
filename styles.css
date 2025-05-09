@@ -1,0 +1,135 @@
+body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .game-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            width: 350px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+        
+        .instructions {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        input {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            width: 60px;
+            text-align: center;
+            margin-right: 10px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        .message {
+            margin-top: 20px;
+            font-weight: bold;
+            min-height: 24px;
+        }
+        
+        .message.success {
+            color: #27ae60;
+        }
+        
+        .message.error {
+            color: #e74c3c;
+        }
+        
+        .message.hint {
+            color: #f39c12;
+        }
+        
+        .guesses-left {
+            margin-top: 15px;
+            color: #7f8c8d;
+        }
+        
+        .new-game-btn {
+            margin-top: 20px;
+            background-color: #2ecc71;
+        }
+        
+        .new-game-btn:hover {
+            background-color: #27ae60;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .guess-history {
+            margin-top: 15px;
+            padding: 10px;
+            border-top: 1px solid #eee;
+        }
+        
+        .guess-item {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            line-height: 30px;
+            text-align: center;
+            margin: 0 5px;
+            font-weight: bold;
+        }
+        
+        .guess-item.high {
+            background-color: #ffcccc;
+            color: #e74c3c;
+        }
+        
+        .guess-item.low {
+            background-color: #d6eaf8;
+            color: #3498db;
+        }
+        
+        .guess-item.correct {
+            background-color: #d5f5e3;
+            color: #27ae60;
+        }
+        
+        .reveal {
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
