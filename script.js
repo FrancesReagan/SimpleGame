@@ -1,4 +1,4 @@
-// 4
+
 // //Step 1: Define an Object to Store Game Data
 // //  Create an object called game to store properties such as the secret number and the maximum number of guesses.
 
@@ -235,3 +235,4 @@
         
         // Initialize game on load
         initGame();
+        
