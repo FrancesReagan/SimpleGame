@@ -240,143 +240,143 @@
         initGame();
         
 
-        Javascript explained 
-        1. The Game Object
-The core of our game is the game object, which uses object-oriented principles to manage the game state:
-javascriptlet game = {
-    secretNumber: Math.floor(Math.random() * 10) + 1,
-    maxGuesses: 3,
-    currentGuesses: 0,
-    guessHistory: [],
+//         Javascript explained 
+//         1. The Game Object
+// The core of our game is the game object, which uses object-oriented principles to manage the game state:
+// javascriptlet game = {
+//     secretNumber: Math.floor(Math.random() * 10) + 1,
+//     maxGuesses: 3,
+//     currentGuesses: 0,
+//     guessHistory: [],
     
-    makeGuess: function(guess) {
-        // Logic for processing a guess
-    },
+//     makeGuess: function(guess) {
+//         // Logic for processing a guess
+//     },
     
-    reset: function() {
-        // Logic for resetting the game
-    }
-};
-This object has:
+//     reset: function() {
+//         // Logic for resetting the game
+//     }
+// };
+// This object has:
 
-Properties (data):
+// Properties (data):
 
-secretNumber: The randomly generated number players try to guess (1-10)
-maxGuesses: The total guesses allowed (3)
-currentGuesses: How many guesses have been made so far
-guessHistory: An array that stores all previous guesses and results
-
-
-Methods (functions):
-
-makeGuess(): Processes a player's guess and returns the result
-reset(): Resets the game to its initial state
+// secretNumber: The randomly generated number players try to guess (1-10)
+// maxGuesses: The total guesses allowed (3)
+// currentGuesses: How many guesses have been made so far
+// guessHistory: An array that stores all previous guesses and results
 
 
+// Methods (functions):
 
-2. The makeGuess Method
-javascriptmakeGuess: function(guess) {
-    if (this.currentGuesses >= this.maxGuesses) {
-        return {
-            message: "No more guesses left! The number was " + this.secretNumber,
-            status: "error",
-            gameOver: true
-        };
-    }
+// makeGuess(): Processes a player's guess and returns the result
+// reset(): Resets the game to its initial state
+
+
+
+// 2. The makeGuess Method
+// javascriptmakeGuess: function(guess) {
+//     if (this.currentGuesses >= this.maxGuesses) {
+//         return {
+//             message: "No more guesses left! The number was " + this.secretNumber,
+//             status: "error",
+//             gameOver: true
+//         };
+//     }
     
-    this.currentGuesses++;
+//     this.currentGuesses++;
     
-    // Store guess history with result
-    let result;
-    if (guess === this.secretNumber) {
-        result = "correct";
-    } else if (guess > this.secretNumber) {
-        result = "high";
-    } else {
-        result = "low";
-    }
+//     // Store guess history with result
+//     let result;
+//     if (guess === this.secretNumber) {
+//         result = "correct";
+//     } else if (guess > this.secretNumber) {
+//         result = "high";
+//     } else {
+//         result = "low";
+//     }
     
-    this.guessHistory.push({
-        number: guess,
-        result: result
-    });
+//     this.guessHistory.push({
+//         number: guess,
+//         result: result
+//     });
     
-    // Return appropriate message
-    if (guess === this.secretNumber) {
-        return {
-            message: "Congratulations! You guessed the secret number.",
-            status: "success",
-            gameOver: true
-        };
-    } else if (guess > this.secretNumber) {
-        return {
-            message: "Too high! Try again.",
-            status: "hint",
-            gameOver: false
-        };
-    } else {
-        return {
-            message: "Too low! Try again.",
-            status: "hint",
-            gameOver: false
-        };
-    }
-}
-This method:
+//     // Return appropriate message
+//     if (guess === this.secretNumber) {
+//         return {
+//             message: "Congratulations! You guessed the secret number.",
+//             status: "success",
+//             gameOver: true
+//         };
+//     } else if (guess > this.secretNumber) {
+//         return {
+//             message: "Too high! Try again.",
+//             status: "hint",
+//             gameOver: false
+//         };
+//     } else {
+//         return {
+//             message: "Too low! Try again.",
+//             status: "hint",
+//             gameOver: false
+//         };
+//     }
+// }
+// // This method:
 
-First checks if the player has already used all their guesses
-Increments the guess counter
-Determines if the guess is correct, too high, or too low
-Stores the guess and its result in the history
-Returns an object with:
+// First checks if the player has already used all their guesses
+// Increments the guess counter
+// Determines if the guess is correct, too high, or too low
+// Stores the guess and its result in the history
+// Returns an object with:
 
-A message to display to the player
-A status for styling purposes ("success", "hint", or "error")
-A boolean indicating if the game is over
+// A message to display to the player
+// A status for styling purposes ("success", "hint", or "error")
+// A boolean indicating if the game is over
 
 
 
-3. The reset Method
-javascriptreset: function() {
-    this.secretNumber = Math.floor(Math.random() * 10) + 1;
-    this.currentGuesses = 0;
-    this.guessHistory = [];
-}
-This method:
+// 3. The reset Method
+// javascriptreset: function() {
+//     this.secretNumber = Math.floor(Math.random() * 10) + 1;
+//     this.currentGuesses = 0;
+//     this.guessHistory = [];
+// }
+// This method:
 
-Generates a new random secret number
-Resets the guess counter to zero
-Clears the guess history
+// Generates a new random secret number
+// Resets the guess counter to zero
+// Clears the guess history
 
-4. The User Interface Setup
-javascript// UI Elements
-const guessInput = document.getElementById('guess-input');
-const guessBtn = document.getElementById('guess-btn');
-const message = document.getElementById('message');
-const guessesLeft = document.getElementById('guesses-left');
-const guessHistory = document.getElementById('guess-history');
-const newGameBtn = document.getElementById('new-game-btn');
-This section gets references to all the HTML elements we need to interact with.
-5. Helper Functions
-javascript// Update guesses left display
-function updateGuessesLeft() {
-    const remaining = game.maxGuesses - game.currentGuesses;
-    guessesLeft.textContent = `Guesses left: ${remaining}`;
-}
+// 4. The User Interface Setup
+// javascript// UI Elements
+// const guessInput = document.getElementById('guess-input');
+// const guessBtn = document.getElementById('guess-btn');
+// const message = document.getElementById('message');
+// const guessesLeft = document.getElementById('guesses-left');
+// const guessHistory = document.getElementById('guess-history');
+// const newGameBtn = document.getElementById('new-game-btn');
+// This section gets references to all the HTML elements we need to interact with.
+// 5. Helper Functions
+// javascript// Update guesses left display
+// function updateGuessesLeft() {
+//     const remaining = game.maxGuesses - game.currentGuesses;
+//     guessesLeft.textContent = `Guesses left: ${remaining}`;
+// }
 
-// Update guess history display
-function updateGuessHistory() {
-    guessHistory.innerHTML = '';
+// // Update guess history display
+// function updateGuessHistory() {
+//     guessHistory.innerHTML = '';
     
-    if (game.guessHistory.length > 0) {
-        game.guessHistory.forEach(guess => {
-            const guessItem = document.createElement('div');
-            guessItem.className = `guess-item ${guess.result} reveal`;
-            guessItem.textContent = guess.number;
-            guessHistory.appendChild(guessItem);
-        });
-    }
-}
+//     if (game.guessHistory.length > 0) {
+//         game.guessHistory.forEach(guess => {
+//             const guessItem = document.createElement('div');
+//             guessItem.className = `guess-item ${guess.result} reveal`;
+//             guessItem.textContent = guess.number;
+//             guessHistory.appendChild(guessItem);
+//         });
+//     }
+// }
 
 // Initialize the game
 // function initGame() {
@@ -540,6 +540,7 @@ function updateGuessHistory() {
 //   {number: 8, result: "high"},
 //   {number: 7, result: "correct"}
 // ]
+
 // Why it's useful:
 
 // Tracking: It keeps track of all guesses the player has made
@@ -548,3 +549,131 @@ function updateGuessHistory() {
 
 // The push method is one of the most common ways to add items to arrays in JavaScript. 
 // It modifies the original array (rather than creating a new one) and returns the new length of the array.
+
+// POP 
+// While push adds to the end of an array, pop does the opposite - it removes the last element from an array.
+// How pop() works:
+// javascriptconst lastItem = myArray.pop();
+
+// The pop() method removes the last element from an array
+// It returns the element that was removed
+// It modifies the original array (reducing its length by 1)
+// If the array is empty, pop() returns undefined
+
+// Example using our game:
+// Let's say I wanted to add an "Undo" feature to my game that lets the player take back their last guess. I could implement it like this:
+// javascriptfunction undoLastGuess() {
+//     // Only undo if there are guesses to undo
+//     if (game.guessHistory.length > 0) {
+//         // Remove the last guess from history
+//         const lastGuess = game.guessHistory.pop();
+        
+//         // Decrement the guess counter
+//         game.currentGuesses--;
+        
+//         // Update the UI
+//         updateGuessHistory();
+//         updateGuessesLeft();
+        
+//         // Tell the player what happened
+//         message.textContent = `Undid your guess of ${lastGuess.number}`;
+        
+//         // If game was over, re-enable inputs
+//         guessBtn.disabled = false;
+//         guessInput.disabled = false;
+//         newGameBtn.classList.add('hidden');
+        
+//         return lastGuess; // Return the removed guess
+//     }
+//     return null; // Nothing to undo
+// }
+
+// Common array methods related to push and pop:
+// JavaScript arrays have several methods for adding and removing elements:
+
+// push(): Adds elements to the end of an array
+// pop(): Removes an element from the end of an array
+// unshift(): Adds elements to the beginning of an array
+// shift(): Removes an element from the beginning of an array
+
+// These methods are often described in terms of data structures:
+
+// push and pop implement a "stack" (last in, first out)
+// push and shift implement a "queue" (first in, first out)
+
+// Example with all four methods:
+// javascriptconst fruits = ["apple"];
+
+// fruits.push("orange");    // Array is now ["apple", "orange"]
+// fruits.unshift("banana"); // Array is now ["banana", "apple", "orange"]
+
+// const lastFruit = fruits.pop();     // lastFruit = "orange", array is now ["banana", "apple"]
+// const firstFruit = fruits.shift();  // firstFruit = "banana", array is now ["apple"]
+// These methods are fundamental to manipulating arrays in JavaScript and are used extensively in many applications, especially when I need 
+// to keep track of ordered collections of data, like this game's history of guesses.
+
+
+// UNSHIFT
+// To add to the beginning of an array in JavaScript, I use the unshift() method!
+// How unshift() works:
+// javascriptmyArray.unshift(newItem);
+
+// The unshift() method adds one or more elements to the beginning of an array
+// It returns the new length of the array
+// It modifies the original array
+// I can add multiple items at once: myArray.unshift(item1, item2, item3)
+
+// Example with my game:
+// Let's say I wanted to modify my game to prioritize the most recent guesses in my display (showing them first). I could use unshift() instead of push():
+// javascript// Instead of:
+// this.guessHistory.push({
+//     number: guess,
+//     result: result
+// });
+
+// // We could use:
+// this.guessHistory.unshift({
+//     number: guess,
+//     result: result
+// });
+// Now the newest guesses would appear at the beginning of the array (index 0).
+// Visual comparison of array methods:
+// Original array: [🍎, 🍐, 🍊]
+
+// push(🍌):    [🍎, 🍐, 🍊, 🍌]  // Adds to end
+// pop():       [🍎, 🍐, 🍊]      // Removes from end
+// unshift(🍓): [🍓, 🍎, 🍐, 🍊]  // Adds to beginning
+// shift():     [🍎, 🍐, 🍊]      // Removes from beginning
+// Performance consideration:
+// One important thing to know is that unshift() can be slower than push() for large arrays. This is because 
+// adding to the beginning requires shifting all existing elements to new positions, while adding to the end 
+// only requires modifying one position.
+// For small arrays like my game history, this performance difference is negligible, but it's good to keep in 
+// mind for larger applications.
+// Practical example of using unshift():
+// If I  wanted to modify my game to show the most recent guess first in the UI, I could change two parts of my code:
+
+// Change the storage method:
+
+// javascriptthis.guessHistory.unshift({
+//     number: guess,
+//     result: result
+// });
+
+// Then in my updateGuessHistory function, I wouldn't need to change anything since it already iterates 
+// through the array and displays each item:
+
+// javascriptfunction updateGuessHistory() {
+//     guessHistory.innerHTML = '';
+    
+//     if (game.guessHistory.length > 0) {
+//         game.guessHistory.forEach(guess => {
+//             const guessItem = document.createElement('div');
+//             guessItem.className = `guess-item ${guess.result} reveal`;
+//             guessItem.textContent = guess.number;
+//             guessHistory.appendChild(guessItem);
+//         });
+//     }
+// }
+// Since I'm using forEach() to iterate through the array and display each guess, the newest guesses 
+// (at the beginning of the array) would now appear first in the display.
